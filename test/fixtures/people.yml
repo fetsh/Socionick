@@ -1,0 +1,23 @@
+# == Schema Information
+# Schema version: 20101023090646
+#
+# Table name: people
+#
+#  id         :integer         not null, primary key
+#  content    :text
+#  title      :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#  user_id    :integer
+#  login      :
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  content: MyText
+  title: MyString
+
+two:
+  content: MyText
+  title: MyString

@@ -1,0 +1,27 @@
+# == Schema Information
+# Schema version: 20101018223225
+#
+# Table name: answers
+#
+#  id         :integer         not null, primary key
+#  user_id    :integer
+#  person_id  :integer
+#  stype_id   :integer
+#  comment    :text
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  person_id: 1
+  stype_id: 1
+  comment: MyText
+
+two:
+  user_id: 1
+  person_id: 1
+  stype_id: 1
+  comment: MyText

@@ -1,0 +1,12 @@
+<!-- table header stuff here -->
+<table>
+<% @users.each do |u| %>
+  <tr>
+    <td><%= link_to_if(can?(:read, User), "#{u.email}", user_path(u.id)) {} %></td>
+    <td><%= "#{u.email}" %></td>
+    <td><%= "#{u.roles.collect{|r| r.name}}" %></td>
+    <td><%= link_to_if(can?(:edit, User), 'edit', edit_user_path(u.id)) {} %></td>
+    <td><%= link_to_if(can?(:delete, u), 'delete', u, :confirm => "Are you sure?", :method => :delete) {} %></td>
+  </tr>
+<% end %>
+</table>

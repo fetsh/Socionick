@@ -1,0 +1,4 @@
+page.insert_html :bottom, "answers_#{@person.id}", :partial => @answer
+page[@answer].visual_effect :highlight
+page["new_answer_#{@person.id}"].reset
+page.visual_effect :slideUp, "answer_form_#{@person.id}", :duration => 0.6

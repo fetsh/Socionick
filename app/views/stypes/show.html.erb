@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @stype.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @stype.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_stype_path(@stype) %> |
+<%= link_to 'Back', stypes_path %>

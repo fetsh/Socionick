@@ -1,0 +1,28 @@
+<div class="person">
+
+  <div class="post_header"><h2><%= person.title %></h2></div>
+  <div class="post_content">
+    <%= raw person.content %>
+  </div>
+
+  <% if can? :update, person -%>
+    <div class="misc">
+      <span class="destroy">
+        <%= link_to "edit", edit_person_path(person) %>
+        <%= link_to "delete", person, :method => :delete,
+                                      :confirm => "You sure?",
+                                      :title => person.title %>
+      </span>
+    </div>
+  <% end -%>
+
+  <div class="answers" id="answers_<%= person.id %>">
+    <% if !person.answers.empty? -%>
+      <%= render :partial => 'answers/answer', :collection => person.answers %>
+    <% end -%>
+  </div>
+</div>
+
+<% unless person.answers.any? { |answer| answer.user.id == current_user.id } -%>
+  <%= render 'answers/answer_form', :person => person %>
+<% end -%>

@@ -1,0 +1,25 @@
+<h1>Listing stypes</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stypes.each do |stype| %>
+  <tr>
+    <td><%= stype.title %></td>
+    <td><%= stype.description %></td>
+    <td><%= link_to 'Show', stype %></td>
+    <td><%= link_to 'Edit', edit_stype_path(stype) %></td>
+    <td><%= link_to 'Destroy', stype, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Stype', new_stype_path %>
