@@ -4,10 +4,14 @@ class PeopleController < ApplicationController
   load_and_authorize_resource
 
   def index
+    if params[:show] == "unanswered"
+      @people = Person.all - current_user.answered_people
+    end
     @stypes = Stype.find(:all)
   end
 
   def show
+    @stypes = Stype.find(:all)
   end
 
   def new
@@ -40,5 +44,13 @@ class PeopleController < ApplicationController
     @person.destroy
     redirect_to people_path
   end
+
+  def unanswered
+    @people = Person.all - current_user.answered_people
+    @stypes = Stype.all
+    authorize! :read, @people
+    render :index
+  end
+
 
 end

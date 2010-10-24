@@ -1,3 +1,4 @@
-<%= div_for answer do %>
-  <b><%= answer.stype.title %></b>&nbsp;<%= answer.comment %>&nbsp;&mdash;&nbsp;<i><%= answer.user.email %></i>
+<%= div_for answer, :class => (answer.user == current_user ? 'usercomment' : 'aliencomment') do %>
+  <b><%= answer.stype.title %></b><% unless answer.comment.blank? -%><b>:</b>&nbsp;&nbsp;<%= answer.comment %>
+    <% end -%> &mdash;&nbsp;<i><% if answer.user == current_user -%><%= link_to 'You', answer.user %><% else -%><%= link_to answer.user.login, answer.user %><% end -%></i>
 <% end -%>

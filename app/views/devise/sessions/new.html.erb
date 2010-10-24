@@ -1,17 +1,23 @@
-<h2>Sign in</h2>
+<div id="form">
+  <div id="form_inner">
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <p><%= f.label :email %><br />
-  <%= f.text_field :email %></p>
+      <%= f.label :email, 'Электронная почта' %>
+      <div style="border: 1px solid rgb(255, 255, 255); margin-bottom: 20px;">
+        <%= f.text_field :email, :class => 'text_field' %>
+      </div>
 
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
+      <%= f.label :password, 'Пароль' %>
+      <div style="border: 1px solid rgb(255, 255, 255); margin-bottom: 30px;">
+        <%= f.password_field :password, :class => 'text_field'%>
+      </div>
 
-  <% if devise_mapping.rememberable? -%>
-    <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
-  <% end -%>
-
-  <p><%= f.submit "Sign in" %></p>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+      <div>
+        <% if devise_mapping.rememberable? -%>
+          <span class="nolabel"><%= f.check_box :remember_me %> <%= f.label :remember_me, 'Запомнить' %></span>
+        <% end -%>
+        <%= f.submit "Войти", :class => 'big_button' %>
+      </div>
+    <% end %>
+  </div>
+</div>

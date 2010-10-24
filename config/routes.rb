@@ -2,11 +2,11 @@ Factory::Application.routes.draw do
 
   resources :roles
 
-  get "answers/create"
-
   get "pages/home"
 
   get "pages/help"
+  
+  match 'people/unanswered' => 'people#unanswered'
 
   devise_for :users,  :controllers => { :registrations => "users/registrations" }
   resources :users
@@ -64,7 +64,7 @@ Factory::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "people#index"
+  root :to => "people#index", :defaults => { :show => 'unanswered' } 
 
   # See how all your routes lay out with "rake routes"
 

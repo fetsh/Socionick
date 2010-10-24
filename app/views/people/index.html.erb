@@ -1,5 +1,3 @@
 <% unless @people.empty? %>
   <%= render :partial => 'people/person', :collection => @people %>
 <% end %>
-
-<%= link_to 'Create Task', new_person_path %>

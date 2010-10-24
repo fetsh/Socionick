@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101018160225
+# Schema version: 20101023092807
 #
 # Table name: users
 #
@@ -17,6 +17,7 @@
 #  last_sign_in_ip      :string(255)
 #  created_at           :datetime
 #  updated_at           :datetime
+#  login                :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -32,6 +33,7 @@ class User < ActiveRecord::Base
   
   has_many :people
   has_many :answers
+  has_many :answered_people, :through => :answers, :source => :person
   has_and_belongs_to_many :roles
   
   

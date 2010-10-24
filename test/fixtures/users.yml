@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101018160225
+# Schema version: 20101023092807
 #
 # Table name: users
 #
@@ -17,6 +17,7 @@
 #  last_sign_in_ip      :string(255)
 #  created_at           :datetime
 #  updated_at           :datetime
+#  login                :string(255)
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html

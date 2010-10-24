@@ -8,6 +8,7 @@ class Ability
       can :manage, :all
     elsif user.role? :specialist
       can :read, [Person, Answer]
+      can :show, User
       can :create, [Person, Answer]
       can :update, Person do |person| 
         person.try(:user) == user
@@ -16,6 +17,7 @@ class Ability
         answer.try(:user) == user
       end
     else
+      can :show, User
       can :read, [Person, Answer]
     end
   end

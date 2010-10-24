@@ -33,6 +33,8 @@ class UsersController < ApplicationController
   # GET /users/1.json                                     HTML AND AJAX
   #-------------------------------------------------------------------
   def show
+    @people = @user.answered_people
+    @stypes = Stype.find(:all)
     respond_to do |format|
       format.json { render :json => @user }
       format.xml  { render :xml => @user }
