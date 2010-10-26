@@ -10,6 +10,12 @@
     <%= f.label :content %><br />
     <%= f.text_area :content, :escape => false %>
   </div>
+  <div>
+    <% Person::GENDERS.each do |gender, translated|  %>
+      <%= f.radio_button :gender, gender %>
+      <%= f.label gender, translated %>
+    <% end %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

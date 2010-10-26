@@ -1,15 +1,13 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Title:</b>
-  <%= @stype.title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @stype.description %>
-</p>
-
-
-<%= link_to 'Edit', edit_stype_path(@stype) %> |
-<%= link_to 'Back', stypes_path %>
+<div class='contentbox'>
+  <h2><%= @stype.title %></h2>
+  <p class='readable'><%= @stype.description %></p>
+</p><% if can? :manage, @stype %><%= link_to 'Edit', edit_stype_path(@stype) %> |
+	<% if can? :delete, @stype %><%= link_to "Delete", @stype, :method => :delete,
+                                      :confirm => "You sure?",
+                                      :title => @stype.title %><% end %><% end %>
+</div>
+<% if @people.present? %>
+  <%= render :partial => 'people/person', :collection => @people %>
+<% else %>
+  <div class='contentbox'><p>Никто пока еще не определен как <%= @stype.title %></p></div>
+<% end %>

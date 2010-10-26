@@ -6,10 +6,20 @@ Factory::Application.routes.draw do
 
   get "pages/help"
   
-  match 'people/unanswered' => 'people#unanswered'
+  match 'people/unanswered' => 'people#index', :defaults => { :show => 'unanswered' }, :as => :unanswered
+  match 'people/all' => 'people#index', :defaults => { :show => 'all'}, :as => :all
+  match 'people/my' => 'people#index', :defaults => { :show => 'my' }, :as => :my_people
+  match 'stypes/switcher' => 'stypes#switcher'
 
   devise_for :users,  :controllers => { :registrations => "users/registrations" }
   resources :users
+  resources :people do  
+    resources :answers
+  end 
+  resources :stypes
+
+  root :to => "people#index", :defaults => { :show => 'unanswered' } 
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -23,11 +33,6 @@ Factory::Application.routes.draw do
   # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
-  resources :people do  
-    resources :answers
-  end 
-  
-  resources :stypes
 
   # Sample resource route with options:
   #   resources :products do
@@ -64,7 +69,7 @@ Factory::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "people#index", :defaults => { :show => 'unanswered' } 
+
 
   # See how all your routes lay out with "rake routes"
 

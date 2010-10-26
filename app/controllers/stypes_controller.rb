@@ -16,7 +16,7 @@ class StypesController < ApplicationController
   # GET /stypes/1
   # GET /stypes/1.xml
   def show
-
+    @people = @stype.people
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @stype }
@@ -77,4 +77,9 @@ class StypesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def switcher
+	redirect_to stype_path(params[:stype][:id])
+  end
+  
 end

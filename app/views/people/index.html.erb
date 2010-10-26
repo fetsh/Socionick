@@ -1,3 +1,7 @@
-<% unless @people.empty? %>
+<% if ((@people.length == 0) and (params[:show] == 'unanswered')) %>
+  <%= render :partial => 'shared/nothing' %>
+<% elsif ((@people.length == 0) and (params[:show] == 'my')) -%>
+  <div class="contentbox readable"><p>Вами пока не создано ни одного запроса. К сожалению.<br><% if can? :create, Person %>Впрочем, <% link_to new_person_path do %>это&nbsp;сделать<% end %> никогда не поздно.</div><% else %>Впрочем, вы и не можете =)<% end %>
+<% else %>
   <%= render :partial => 'people/person', :collection => @people %>
 <% end %>

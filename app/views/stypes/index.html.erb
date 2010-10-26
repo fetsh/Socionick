@@ -1,25 +1,58 @@
-<h1>Listing stypes</h1>
+<div class='contentbox'><h2>Типы информационного метаболизма</h2>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @stypes.each do |stype| %>
-  <tr>
-    <td><%= stype.title %></td>
-    <td><%= stype.description %></td>
-    <td><%= link_to 'Show', stype %></td>
-    <td><%= link_to 'Edit', edit_stype_path(stype) %></td>
-    <td><%= link_to 'Destroy', stype, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+<table class="tim">
+	<tr><td class='tim-quadra'>I квадра</td></tr>
+	<tr><td>
+		<table>
+			<tr>
+				<td valign="top" align="center"><b>ENTP</b><br><%= link_to @stypes[0].title, @stypes[0] %></td>
+				<td valign="top" align="center"><b>ISFP</b><br><%= link_to @stypes[1].title, @stypes[1] %></td>
+				<td valign="top" align="center"><b>ESFJ</b><br><%= link_to @stypes[2].title, @stypes[2] %></td>
+				<td valign="top" align="center"><b>INTJ</b><br><%= link_to @stypes[3].title, @stypes[3] %></td>
+			</tr>
+		</table>
+	</td></tr>
 </table>
 
-<br />
+<table class="tim">
+	<tr><td class='tim-quadra'>II квадра</td></tr>
+	<tr><td>
+		<table>
+			<tr>
+				<td valign="top" align="center"><b>ENFJ</b><br><%= link_to @stypes[4].title, @stypes[4] %></td>
+				<td valign="top" align="center"><b>ISTJ</b><br><%= link_to @stypes[5].title, @stypes[5] %></td>
+				<td valign="top" align="center"><b>ESTP</b><br><%= link_to @stypes[6].title, @stypes[6] %></td>
+				<td valign="top" align="center"><b>INFP</b><br><%= link_to @stypes[7].title, @stypes[7] %></td>
+			</tr>
+		</table>
+	</td></tr>
+</table>
 
-<%= link_to 'New Stype', new_stype_path %>
+<table class="tim">
+	<tr><td class='tim-quadra'>III квадра</td></tr>
+	<tr><td>
+		<table>
+			<tr>
+				<td valign="top" align="center"><b>ESFP</b><br><%= link_to @stypes[8].title, @stypes[8] %></td>
+				<td valign="top" align="center"><b>INTP</b><br><%= link_to @stypes[9].title, @stypes[9] %></td>
+				<td valign="top" align="center"><b>ENTJ</b><br><%= link_to @stypes[10].title, @stypes[10] %></td>
+				<td valign="top" align="center"><b>ISFJ</b><br><%= link_to @stypes[11].title, @stypes[11] %></td>
+			</tr>
+		</table>
+	</td></tr>
+</table>
+
+<table class="tim">
+	<tr><td class='tim-quadra'>IV квадра</td></tr>
+	<tr><td>
+		<table>
+			<tr>
+				<td valign="top" align="center"><b>ESTJ</b><br><%= link_to @stypes[12].title, @stypes[12] %></td>
+				<td valign="top" align="center"><b>INFJ</b><br><%= link_to @stypes[13].title, @stypes[13] %></td>
+				<td valign="top" align="center"><b>ENFP</b><br><%= link_to @stypes[14].title, @stypes[14] %></td>
+				<td valign="top" align="center"><b>ISTP</b><br><%= link_to @stypes[15].title, @stypes[15] %></td>
+			</tr>
+		</table>
+	</td></tr>
+</table>
+</div>

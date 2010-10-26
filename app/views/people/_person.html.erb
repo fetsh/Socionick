@@ -1,7 +1,7 @@
 <div class="contentbox person">
 
-  <div class="post_header"><h2><%= link_to person.title, person %></h2></div>
-  <div class="post_content">
+  <div class="post_header"><h2><%= link_to person.title, person %><span class='author'>by <%= person.user.login %></span></h2></div>
+  <div class="post_content readable">
     <%= raw person.content %>
   </div>
 
@@ -9,9 +9,9 @@
     <div class="misc">
       <span class="destroy">
         <%= link_to "edit", edit_person_path(person) %>
-        <%= link_to "delete", person, :method => :delete,
+        <% if can? :delete, person %><%= link_to "delete", person, :method => :delete,
                                       :confirm => "You sure?",
-                                      :title => person.title %>
+                                      :title => person.title %><% end %>
       </span>
     </div>
   <% end -%>

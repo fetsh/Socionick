@@ -5,18 +5,38 @@ body {
   width: 630px;
   margin: 0px auto;
 }
+
+
+/*////////////////////////////////////////////////////////////
+
+                          HEADER
+
+/////////////////////////////////////////////////////////////*/
+
 header {
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: white;
-
 }
+
+header table {
+  margin:0; padding:0;
+}
+header table td, header table tr {
+  margin:0; padding:0;padding-left: 10px;
+}
+
+header table td:first-child {
+-webkit-border-radius: 15px;-moz-border-radius: 15px;border-radius: 15px;
+  background-color: white;
+  padding:0;
+}
+
 header h1 {
   text-align: center;
-  padding: 30px;
+  padding: 10px;
   margin: 0px;
   font-family:'times new roman',times,serif;
-  font-size: 50px;
+  font-size: 30px;
 }
 header h1 a:hover {
   text-decoration: none;
@@ -30,6 +50,7 @@ header h1 a {
 header h1 .marked {
   background-color: #E1FF81;
   padding: 0 10px;
+  font-size: 20px;
 }
 
 header nav {
@@ -49,6 +70,91 @@ border-bottom-right-radius: 10px;
 
 }
 
+/*//////////////////////////////////////////////
+
+              Friendfeed Boxes
+
+////////////////////////////////////////////////*/
+
+.box {padding: 0px;background:transparent;}
+/* Page/boxes */
+.box .box-top,.box .box-bottom,.box .box-corner{background-image:url("/images/box-gray.png");background-repeat:no-repeat}
+
+.box .box-top,.box .box-bottom{margin-left:10px}
+
+.box .box-corner{background-position:top left;margin-left:-10px;width:10px;float:left;display:inline}
+
+.box .box-top .box-spacer,.box .box-top .box-corner{height:10px}
+
+.box .box-bottom .box-spacer,.box .box-bottom .box-corner{height:10px}
+
+.box .box-top{background-position:top right}
+
+.box .box-bottom{background-position:bottom right}
+
+.box .box-bottom .box-corner{background-position:bottom left;}
+
+.box .box-body{background:#eee;padding-top:15px;padding-left:25px;padding-right:25px}
+
+.box.white .box-top,.box.white .box-bottom,.box.white .box-corner{background-image:url("/images/box-white.png")}
+
+.box.white .box-body{background:white}
+
+.box .box-bar,.box .box-bar .box-corner{background-repeat:no-repeat}
+
+.box .box-bar{margin-left:10px;background-position:top right}
+
+.box .box-bar .box-corner{background-position:top left}
+
+.box .box-bar .box-bar-text,.box .box-bar .box-bar-text a{color:white}
+
+.box .box-bar .box-bar-text{padding-left:5px;padding-right:7px;line-height:28px;height:28px}
+
+.box .box-bar .box-corner{height:28px}
+
+.box-bar-text .title{font-weight:bold}
+
+.box .box-bar,.box .box-bar .box-corner{background-image:url("/images/bar-box-tim2.png")}
+
+.box .box-bar.box-people,.box .box-bar.box-people .box-corner{background-image:url("/images/bar-box-people.png")}
+
+.box .box-bar.box-user,.box .box-bar.box-user .box-corner{background-image:url("/images/bar-box-user.png")}
+
+.box .box-bar.box-tim,.box .box-bar.box-tim .box-corner{background-image:url("/images/bar-box-tim.png")}
+
+/* Chrome */ 
+
+#sidebar .box .box-body{padding-top:10px;padding-left:15px;padding-right:15px;padding-bottom:3px}
+
+#sidebar .box .footer,#sidebar .box .emptymessage{color:#737373;font-size:11px;font-family:"Lucida Grande",Tahoma,Verdana}
+
+#sidebar .box .footer{border-top:1px solid #ccc;padding-top:5px}
+#sidebar .box .pseudofooter{border:0;padding-top:5px}
+
+#sidebar .box .emptymessage a,#sidebar .box .footer a{color:#77c}
+
+#sidebar .box ul{list-style-type:none;margin:0;padding:0}
+
+#sidebar .box ul li{padding-bottom:3px;white-space:nowrap;overflow:hidden}
+
+#sidebar .box .section{margin-bottom:11px;padding-bottom:8px}
+
+#sidebar .box .updated{font-family:"Lucida Grande",Tahoma,Verdana;font-size:11px;line-height:11px;color:#888;padding-bottom:1px}
+
+#sidebar .box,#sidebar #profile{margin-bottom:0px}
+
+.box .box-bar,.box .box-bar.box-people,.box .box-bar.box-user,.box .box-bar.box-tim,.box .box-bar .box-corner{background-image:url('/images/bar-box-tim2.png')}
+
+.box .box-bar.box-people,.box .box-bar.box-people .box-corner{background-image:url('/images/bar-box-people.png')}
+
+.box .box-bar.box-user,.box .box-bar.box-user .box-corner{background-image:url('/images/bar-box-user.png')}
+
+.box .box-bar.box-tim,.box .box-bar.box-tim .box-corner{background-image:url('/images/bar-box-tim.png')}
+
+.subscribebar,button.fancy{border:1px solid #437ec7;background-color:#437ec7}
+
+
+
 nav ul {
   margin: 0;
   padding: 0;
@@ -65,6 +171,13 @@ nav ul li {
   padding: 20px;
   padding-bottom: 10px;
 }
+
+.readable {
+  font-family:Georgia,serif;
+  font-size:16px;
+  line-height:1.3;
+}
+
 .person {
   position: relative;
 }
@@ -101,18 +214,26 @@ border-bottom-left-radius: 10px;
   padding-bottom: 20px;
 }
 .post_header h2 {
-  font-size: 1.5em;
   margin: 0;
   padding: 0;
+  font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+  font-size: 18px;
 }
-.post_header h2 a {
+.post_header h2 a, .contentbox h2 {
   color: #238DB1;
   text-decoration: none;
+}
+
+.post_header .author {
+  color: #ADADAD;
+  font-size: 12px;
+  padding-left: 10px;
 }
 
 .post_content {
   padding: 0;
   padding-bottom: 20px;
+  overflow: hidden;
 }
 
 .answers {
@@ -122,6 +243,13 @@ border-bottom-left-radius: 10px;
 .answer {
   margin-bottom: 5px;
   padding-left: 20px;
+  font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+  font-size: 13px;
+}
+
+.answer_description {
+  padding-left: 5px;
+  color: #666666;
 }
 
 .aliencomment {
@@ -139,7 +267,7 @@ border-bottom-left-radius: 10px;
   height: 40px;
   margin: 0 auto;
   background-color: #CAD3DA;
-  border-top: 1px solid #96ACBE;
+  border-top: 1px solid #abbac7;
   -webkit-border-bottom-left-radius: 10px;
   -webkit-border-bottom-right-radius: 10px;
   -moz-border-radius-bottomright: 10px;
@@ -221,4 +349,49 @@ color:#8A1F11;
 border:2px solid #FBC2C4;
 margin-bottom:1em;
 padding:0.8em;
+}
+
+/*/////////////////////////////////////////////
+ * 
+ *             TIM TABLES
+ * 
+ * /////////////////////////////////////////*/
+
+.contentbox table.tim {
+  padding: 0px;
+  margin: 0px;
+}
+.contentbox table.tim table {
+  padding: 0px;
+  margin: 0;
+  margin-bottom: 30px;
+}
+.tim-quadra {
+  background-color: #EEEEEE;
+  font-weight: bold;
+  color: #238DB1;
+  text-align: center;
+}
+
+select#stype_id {
+	font-size: 11px;
+	height: 18px;
+	padding: 1px
+}
+.tim-go {
+background:transparent;
+border:0;
+color:#FFFFFF;
+cursor:pointer;
+padding: 0;
+margin:0;
+margin-top: 3px;
+color:#000099;
+text-decoration:underline;
+display:block;
+font-size:12px;
+font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;
+}
+.tim-go:hover {
+color:#08d;
 }

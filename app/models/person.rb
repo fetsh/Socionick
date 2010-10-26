@@ -14,14 +14,14 @@
 
 class Person < ActiveRecord::Base
 
-  has_many :answers, :dependent => :destroy
-  belongs_to :user
+  has_many :answers, :dependent => :destroy, :inverse_of => :person
+  belongs_to :user, :inverse_of => :people
 
   validates :title,   :presence => true, :length => { :maximum => 140 }
   validates :content, :presence => true
 
   default_scope :order => 'people.created_at DESC'
-    
-  attr_accessible :content, :title, :answers_attributes
 
+  attr_accessible :content, :title, :answers_attributes, :gender
+  GENDERS = {'male' => 'Мужчина', 'female' => 'Женщина'}
 end

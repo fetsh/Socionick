@@ -31,9 +31,9 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :role_ids, :login
   
-  has_many :people
-  has_many :answers
-  has_many :answered_people, :through => :answers, :source => :person
+  has_many :people, :inverse_of => :user
+  has_many :answers, :inverse_of => :user
+  has_many :answered_people, :through => :answers, :source => :person, :inverse_of => :user
   has_and_belongs_to_many :roles
   
   

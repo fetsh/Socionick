@@ -14,8 +14,8 @@
 
 class Answer < ActiveRecord::Base
   
-  belongs_to :user
-  belongs_to :person
-  belongs_to :stype
+  belongs_to :user, :inverse_of => :answers
+  belongs_to :person, :inverse_of => :answers
+  belongs_to :stype, :inverse_of => :answers
   
 end
