@@ -18,4 +18,6 @@ class Answer < ActiveRecord::Base
   belongs_to :person, :inverse_of => :answers
   belongs_to :stype, :inverse_of => :answers
   
+  validates :stype_id, :presence => true
+  
 end
