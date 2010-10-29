@@ -17,6 +17,7 @@ class StypesController < ApplicationController
   # GET /stypes/1.xml
   def show
     @people = @stype.people
+    @stypes = Stype.all
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @stype }

@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   before_create :create_login
 
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
@@ -45,6 +45,10 @@ class User < ActiveRecord::Base
   def create_login             
     email = self.email.split(/@/)
     self.login = email[0]
+  end
+  
+  def human_login
+    self.login.split('-').join(' ').split('.').join(' ').titleize
   end
   
 end

@@ -1,13 +1,14 @@
+<div class="contentbox">
 <%= form_for person  do |f| %>
 
   <%= render 'shared/error_messages', :object => f.object %>
 
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title, "Имя" %><br />
     <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= f.label :content %><br />
+  <div class="field" style="padding-top:15px;">
+    <%= f.label :content, "Описание" %><br />
     <%= f.text_area :content, :escape => false %>
   </div>
   <div>
@@ -16,8 +17,9 @@
       <%= f.label gender, translated %>
     <% end %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions" style="padding-top:15px; padding-bottom:15px;">
+    <%= f.submit "Отправить", :class => 'big_button'%>
   </div>
 
 <% end %>
+</div>

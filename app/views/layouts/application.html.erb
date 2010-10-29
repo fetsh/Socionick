@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>il.zoff[nbspace] — <%= yield :title %></title>
+  <title><%= yield :title %> — nbspace::socionics</title>
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
@@ -22,11 +22,11 @@
   
     <%= render 'layouts/header' %> 
     <section id='content'>
-
+     <% unless params[:controller] == 'devise/sessions' and params[:action] == 'new' %>
       <% flash.each do |key, value| %>
         <%= content_tag(:div, value, :class => "flash #{key}") %>
       <% end %>
-
+     <% end %>
       <%= yield %>
 
     </section>    

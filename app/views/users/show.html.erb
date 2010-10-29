@@ -1,33 +1,32 @@
+
+<% title "Answers of #{@user.human_login}" %>  
+
 <div class='contentbox'>
-<h3><%= @user.login %>
-<% if can? :manage, @user -%>(<%= link_to "Edit", edit_user_path(@user) %> | <%= link_to "Delete", user_path(@user), :confirm => "Are you sure?", :method => :delete %>)<% end -%></h3>
- 
-<table>
-	<tbody>
-		<tr>
-			<td>Email:</td>
-			<td><%= @user.email %></td>
-		</tr>
-		<% unless @user.roles.empty? -%>
-		  <tr>
-			  <td>Role:</td>
-			  <td><%= @user.roles.first.name %></td>
-		  </tr>
-		<% end -%>
-		<tr>
-			<td>Created at:</td>
-			<td><%= @user.created_at %></td>
-		</tr>
-		<tr>
-			<td>Last Sign In:</td>
-			<td><%= @user.last_sign_in_at %></td>
-		</tr>
-		<tr>
-			<td>Sign In Count:</td>
-			<td><%= @user.sign_in_count %></td>
-		</tr>
-	</tbody>
-</table>
+
+  <div class="user-profile">
+
+    <div class="gravatar">
+      <%= gravatar_for ( @user, :size => 75 ) %>
+    </div>
+
+    <div class="body">
+      <div class="stats">
+        <div>Created at: <%= @user.created_at %></div>
+        <div>Last Sign In: <%= @user.last_sign_in_at %></div>
+        <div>Sign In Count: <%= @user.sign_in_count %></div>
+      </div>
+    
+      <h2><%= @user.human_login %>
+        <% if can? :manage, @user -%><span class="editlinks">(<%= link_to "Edit", edit_user_path(@user) %> | <%= link_to "Delete", user_path(@user), :confirm => "Are you sure?", :method => :delete %>)</span><% end -%>
+      </h2>
+    
+      <div class="description">
+        <% unless @user.roles.empty? -%><%= @user.roles.first.name %><% end -%>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <h3><%= @title %></h3>
 </div>
 
 <% unless @people.empty? %>

@@ -19,9 +19,11 @@ class Person < ActiveRecord::Base
 
   validates :title,   :presence => true, :length => { :maximum => 140 }
   validates :content, :presence => true
+  validates :gender, :presence => true
 
   default_scope :order => 'people.created_at DESC'
 
   attr_accessible :content, :title, :answers_attributes, :gender
   GENDERS = {'male' => 'Мужчина', 'female' => 'Женщина'}
+  
 end

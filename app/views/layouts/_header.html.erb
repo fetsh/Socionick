@@ -5,7 +5,7 @@
         <h1><a href="<%= root_path %>">nbspace:<br><span class="marked">Соционика</span></a></h1>
       </td>
       <% if user_signed_in? %>
-      <td>
+      <td style="width:25%;">
         <div class="box">
           <div class="box-bar box-people">
             <div class="box-corner"></div>
@@ -18,26 +18,19 @@
           <div class="box-body">
             <div class="section">
               <ul>
-                <li><%= link_to 'Все', all_path %></li>
-                <li><%= link_to 'Нетипированные', unanswered_path %></li>
+                <li><%= link_to 'Все', people_path %></li>
+                <li><%= link_to 'По типу', stypes_path %></li>
               </ul>
             </div>
             <% if can? :create, Person %>
               <div class="footer"><%= link_to 'Создать запрос', new_person_path %> </div>
-            <% else %>
-              <div class="pseudofooter">&nbsp;</div>
             <% end %>
-          </div>
-          
-          <div class="box-bottom">
-            <div class="box-corner"></div>
-            <div class="box-spacer"></div>
           </div>
         </div>
       </td>
 
-
-      <td align="right">
+      <% if can? :create, Person %>
+      <td style="width:25%;">
         <div class="box">
           <div class="box-bar box-user">
             <div class="box-corner"></div>
@@ -49,45 +42,31 @@
           <div class="box-body">
             <div class="section">
               <ul>
-                <li><%= link_to 'Мои персоны', my_people_path %></li>
+                <li><%= link_to 'Мои персоны', user_people_path(current_user) %></li>
                 <li><%= link_to 'Мои ответы', user_path(current_user) %></li>
+                <li><%= link_to 'Отвечать', unanswered_path %></li>
               </ul>
             </div>
-            
-            <div class="pseudofooter">&nbsp;<!-- <%= link_to 'Создать персону', new_person_path %> --></div> 
-          </div>
-          
-          <div class="box-bottom">
-            <div class="box-corner"></div>
-            <div class="box-spacer"></div>
           </div>
         </div>
       </td>
+      <% end %>
 
 
-      <td>
+      <td style="width:25%;">
         <div class="box">
           <div class="box-bar box-tim">
             <div class="box-corner"></div>
             <div class="box-bar-text">
-              <span class="title"><%= link_to 'Тимы', stypes_path %></span>
+              <span class="title"><%= link_to 'Избранные', '#' %></span>
             </div>
           </div>
           <div class="subbar box-tim" style="display: none;"></div>
           <div class="box-body">
             <div class="section">
-              <ul>
-                <li><% form_tag '/stypes/switcher', :method => :get do -%>
-					<%= select ('stype', 'id', Stype.all.map {|u| [u.title,u.id]})  %><%= submit_tag 'Перейти', :class => 'tim-go' %><% end %></li>
-              </ul>
+              Зарезервированно для версии 1.0.0<!-- <% form_tag '/stypes/switcher', :method => :get do -%>
+					<%= select ('stype', 'id', Stype.all.map {|u| [u.title,u.id]})  %><%= submit_tag 'Перейти', :class => 'tim-go' %><% end %> -->
             </div>
-            
-            <div class="pseudofooter">&nbsp;<!-- <%= link_to 'Создать персону', new_person_path %> --></div> 
-          </div>
-          
-          <div class="box-bottom">
-            <div class="box-corner"></div>
-            <div class="box-spacer"></div>
           </div>
         </div>
       </td>

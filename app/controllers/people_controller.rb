@@ -1,20 +1,12 @@
 class PeopleController < ApplicationController
 
   before_filter :authenticate_user!
-  load_and_authorize_resource :except => :index
+  load_and_authorize_resource :except => [:unanswered]
 
   def index
     @stypes = Stype.find(:all)
-    params[:show] = "unanswered" unless params[:show].present?
-    if params[:show] == "all"
-      @people = Person.all(:include => [:user, :answers])
-    elsif params[:show] == "unanswered"
-      @people = Person.all - current_user.answered_people
-    elsif params[:show] == "my"
-      @people = current_user.people
-    else
-      @people = Person.all - current_user.answered_people
-    end
+    @people = params[:user_id].nil? ? Person.all(:include => [:user, :answers]) : User.find_by_id(params[:user_id]).people
+    #@people = Person.all(:include => [:user, :answers])
   end
 
   def show
@@ -55,7 +47,7 @@ class PeopleController < ApplicationController
   def unanswered
     @people = Person.all - current_user.answered_people
     @stypes = Stype.all
-    authorize! :read, @people
+    authorize! :read, Person
     render :index
   end
 

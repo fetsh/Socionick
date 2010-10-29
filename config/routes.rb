@@ -6,19 +6,23 @@ Factory::Application.routes.draw do
 
   get "pages/help"
   
-  match 'people/unanswered' => 'people#index', :defaults => { :show => 'unanswered' }, :as => :unanswered
-  match 'people/all' => 'people#index', :defaults => { :show => 'all'}, :as => :all
-  match 'people/my' => 'people#index', :defaults => { :show => 'my' }, :as => :my_people
+  match 'people/unanswered', :as => :unanswered
   match 'stypes/switcher' => 'stypes#switcher'
+  match 'users/:id/people' => 'users#own_people', :as => :user_people
 
-  devise_for :users,  :controllers => { :registrations => "users/registrations" }
+#  devise_for :users,  :controllers => { :registrations => "users/registrations" }
+  devise_for :users
   resources :users
+
   resources :people do  
     resources :answers
   end 
-  resources :stypes
 
-  root :to => "people#index", :defaults => { :show => 'unanswered' } 
+  resources :stypes
+  
+  
+
+  root :to => "people#index"
 
 
   # The priority is based upon order of creation:

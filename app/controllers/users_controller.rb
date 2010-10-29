@@ -35,6 +35,7 @@ class UsersController < ApplicationController
   def show
     @people = @user.answered_people
     @stypes = Stype.find(:all)
+    @title = "Мои ответы"
     respond_to do |format|
       format.json { render :json => @user }
       format.xml  { render :xml => @user }
@@ -113,6 +114,15 @@ class UsersController < ApplicationController
         format.html { render :action => :edit, :status => :unprocessable_entity }
       end
     end
+  end
+  
+  def own_people
+    @user = User.find(params[:id])
+    @stypes = Stype.all
+    @people = @user.people
+    @title = "Мои персоны"
+    authorize! :read, Person
+    render :show
   end
   
   private

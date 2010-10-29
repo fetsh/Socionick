@@ -94,7 +94,12 @@ border-bottom-right-radius: 10px;
 
 .box .box-bottom .box-corner{background-position:bottom left;}
 
-.box .box-body{background:#eee;padding-top:15px;padding-left:25px;padding-right:25px}
+.box .box-body{background:#eee;padding-top:15px;padding-left:25px;padding-right:25px;padding-bottom:25px;-webkit-border-bottom-left-radius: 15px;
+-webkit-border-bottom-right-radius: 15px;
+-moz-border-radius-bottomright: 15px;
+-moz-border-radius-bottomleft: 15px;
+border-bottom-left-radius: 15px;
+border-bottom-right-radius: 15px; border-bottom:2px solid silver;height:80px; overflow: hidden;}
 
 .box.white .box-top,.box.white .box-bottom,.box.white .box-corner{background-image:url("/images/box-white.png")}
 
@@ -106,7 +111,7 @@ border-bottom-right-radius: 10px;
 
 .box .box-bar .box-corner{background-position:top left}
 
-.box .box-bar .box-bar-text,.box .box-bar .box-bar-text a{color:white}
+.box .box-bar .box-bar-text,.box .box-bar .box-bar-text a{color:white;text-decoration:none;font-weight:bold;font-size:14px;}
 
 .box .box-bar .box-bar-text{padding-left:5px;padding-right:7px;line-height:28px;height:28px}
 
@@ -124,7 +129,7 @@ border-bottom-right-radius: 10px;
 
 /* Chrome */ 
 
-#sidebar .box .box-body{padding-top:10px;padding-left:15px;padding-right:15px;padding-bottom:3px}
+#sidebar .box .box-body{padding-top:10px;padding-left:15px;padding-right:15px;padding-bottom:10px}
 
 #sidebar .box .footer,#sidebar .box .emptymessage{color:#737373;font-size:11px;font-family:"Lucida Grande",Tahoma,Verdana}
 
@@ -224,9 +229,11 @@ border-bottom-left-radius: 10px;
   text-decoration: none;
 }
 
-.post_header .author {
+.post_header .author, .user-profile .editlinks, .user-profile .editlinks a {
   color: #ADADAD;
   font-size: 12px;
+}
+.post_header .author, .user-profile .editlinks {
   padding-left: 10px;
 }
 
@@ -379,19 +386,56 @@ select#stype_id {
 	padding: 1px
 }
 .tim-go {
-background:transparent;
-border:0;
-color:#FFFFFF;
-cursor:pointer;
-padding: 0;
-margin:0;
-margin-top: 3px;
-color:#000099;
-text-decoration:underline;
-display:block;
-font-size:12px;
-font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;
+  background:transparent;
+  border:0;
+  color:#FFFFFF;
+  cursor:pointer;
+  padding: 0;
+  margin:0;
+  margin-top: 3px;
+  color:#000099;
+  text-decoration:underline;
+  display:block;
+  font-size:12px;
+  font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;
 }
 .tim-go:hover {
-color:#08d;
+  color:#08d;
+}
+
+.user-profile {
+  border-bottom:1px solid #EEEEEE;
+  margin-bottom:16px;
+  padding-bottom:16px;
+}
+
+.user-profile .gravatar {
+  float:left;
+  line-height:0;
+}
+
+.user-profile .body {
+  margin-left:90px;
+}
+
+.user-profile h2 {
+  margin-bottom: 0;
+  font-size:26px;
+  font-weight:bold;
+}
+
+.user-profile .stats {
+  float:right;
+  margin-left:25px;
+  margin-right:1px;
+  text-align:right;
+  white-space:nowrap;
+}
+
+.user-profile .description {
+  margin-top:4px;
+}
+
+.clear {
+  clear:left;
 }

@@ -18,6 +18,7 @@ class Ability
         answer.try(:user) == user
       end
     else
+      can :switcher, Stype
       can :show, User
       can :read, [Person, Answer, Stype]
     end
