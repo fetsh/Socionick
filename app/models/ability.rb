@@ -11,6 +11,7 @@ class Ability
       can :show, User
       can :create, [Person, Answer]
       can :switcher, Stype
+      can :rss, Person
       can :update, Person do |person| 
         person.try(:user) == user
       end
@@ -21,6 +22,7 @@ class Ability
       can :switcher, Stype
       can :show, User
       can :read, [Person, Answer, Stype]
+      can :rss, Person
     end
   end
 end
