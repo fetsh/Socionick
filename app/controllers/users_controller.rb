@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   def show
     @people = @user.answered_people
     @stypes = Stype.find(:all)
-    @title = "Мои ответы"
+    @title = "Ответы"
     respond_to do |format|
       format.json { render :json => @user }
       format.xml  { render :xml => @user }
@@ -120,7 +120,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @stypes = Stype.all
     @people = @user.people
-    @title = "Мои персоны"
+    @title = "Персоны"
     authorize! :read, Person
     render :show
   end

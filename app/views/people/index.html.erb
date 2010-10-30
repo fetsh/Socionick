@@ -1,7 +1,10 @@
 <% if ((@people.length == 0) and (params[:action] == 'unanswered')) %>
+  <% title "Нет никого" %>
   <%= render :partial => 'shared/nothing' %>
-<% elsif ((@people.length == 0) and (params[:show] == 'my')) -%>
-  <div class="contentbox readable"><p>Вами пока не создано ни одного запроса. К сожалению.<br><% if can? :create, Person %>Впрочем, <% link_to new_person_path do %>это&nbsp;сделать<% end %> никогда не поздно.</div><% else %>Впрочем, вы и не можете =)<% end %>
-<% else %>
+<% elsif @people.length == 0 %>
+  <% title "Нет никого" %>
+  <div class='contentbox'>&laquo;По вашему запросу ничего не найдено&raquo;. <% if can? :create, Person %><%= link_to new_person_path do %>Создайте&nbsp;свой запрос на типирование<% end -%><% end %>.
+<% else  %>
+  <% title "Все персоны" %>
   <%= render :partial => 'people/person', :collection => @people %>
 <% end %>

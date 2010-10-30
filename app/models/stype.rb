@@ -14,4 +14,6 @@ class Stype < ActiveRecord::Base
 
   has_many :answers
   has_many :people, :through => :answers
+  
+  validates :title, :uniqueness => true
 end

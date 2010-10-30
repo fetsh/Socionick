@@ -1,16 +1,8 @@
 <footer>
   <nav>
     <ul>
-      <li>Misc:</li>
-      <li><%= link_to "Home", root_path %></li>
-      <% if can? :create, Person -%>
-        <li><%= link_to 'Create Person', new_person_path %></li>
-      <% end -%>
-      <% if user_signed_in? %>
-        <li><%= current_user.login %> (<%= link_to "Sign out", destroy_user_session_path -%>)</li>
-      <% else %>
-        <li><%= link_to "Sign in", new_user_session_path %></li>
-      <% end %>
+      <li><%= link_to "На главную", root_path %></li>
+      <li><%= link_to "Наши планы", about_path %></li>
     </ul>
     </ul>
   </nav>

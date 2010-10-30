@@ -1,6 +1,8 @@
-
-<% title "Answers of #{@user.human_login}" %>  
-
+<% if params[:action] == "own_people" %>
+  <% title @user == current_user ? "Мои персоны" : "Персоны #{@user.login}" %>
+<% else %>
+  <% title "Ответы #{@user.human_login}" %>
+<% end %>
 <div class='contentbox'>
 
   <div class="user-profile">
@@ -31,4 +33,14 @@
 
 <% unless @people.empty? %>
   <%= render :partial => 'people/person', :collection => @people %>
+<% else %>
+  <div class="contentbox readable">
+  <% if params[:action] == 'own_people' %>
+    <p>Нет никого.</p>
+    <% if @user == current_user %><p>Вами пока не создано ни одного запроса. К сожалению.<br><% if can? :create, Person %>Впрочем, <% link_to new_person_path do %>это&nbsp;сделать<% end %> никогда не поздно.<% else %>Впрочем, вы и не можете =)<% end %><% end %>
+  <% else %>
+    <p>Нет никого.</p>
+    <% if @user == current_user %><p>Вы еще никого не протипировали. <% if can? :create, Answer %> <%= link_to 'Можно попробовать', unanswered_path %></p><% end %><% end %>
+  <% end %>
+  </div>
 <% end %>

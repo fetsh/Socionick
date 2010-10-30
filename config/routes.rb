@@ -2,9 +2,7 @@ Factory::Application.routes.draw do
 
   resources :roles
 
-  get "pages/home"
-
-  get "pages/help"
+  get "pages/about", :as => "about"
   
   match 'people/unanswered', :as => :unanswered
   match 'stypes/switcher' => 'stypes#switcher'
