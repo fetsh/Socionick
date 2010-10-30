@@ -7,6 +7,7 @@ Factory::Application.routes.draw do
   match 'people/unanswered', :as => :unanswered
   match 'stypes/switcher' => 'stypes#switcher'
   match 'users/:id/people' => 'users#own_people', :as => :user_people
+  match 'people/rss', :as => :rss
 
 #  devise_for :users,  :controllers => { :registrations => "users/registrations" }
   devise_for :users

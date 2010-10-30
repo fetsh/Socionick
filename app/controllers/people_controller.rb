@@ -1,7 +1,14 @@
 class PeopleController < ApplicationController
 
   before_filter :authenticate_user!
-  load_and_authorize_resource :except => [:unanswered]
+  load_and_authorize_resource :except => [:unanswered, :rss]
+
+  def rss
+    @people = Person.all
+    respond_to do |format|
+      format.atom 
+    end
+  end
 
   def index
     @stypes = Stype.find(:all)
