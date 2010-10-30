@@ -6,6 +6,12 @@ class PeopleController < ApplicationController
   def index
     @stypes = Stype.find(:all)
     @people = params[:user_id].nil? ? Person.all(:include => [:user, :answers]) : User.find_by_id(params[:user_id]).people
+    respond_to do |format|
+      format.json { render :json => @people }
+      format.xml  { render :xml => @people }
+      format.atom 
+      format.html
+    end
     #@people = Person.all(:include => [:user, :answers])
   end
 

@@ -8,11 +8,11 @@
     <link rel="icon" href="/images/favicon.ico" type="image/ico" />
   <link rel="shortcut icon" href="/images/favicon.ico" type="image/ico" />
   
-  <%= stylesheet_link_tag :all %>
   <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
   <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
   <!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
-  <%= stylesheet_link_tag 'custom', :media => 'screen' %>
+  <%= stylesheet_link_tag :all %>
+  <%= auto_discovery_link_tag :atom, people_path(:format => :atom) %>
 
 
   <%= javascript_include_tag :defaults %>

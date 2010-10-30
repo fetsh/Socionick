@@ -1,6 +1,6 @@
 <div class="contentbox person">
 
-  <div class="post_header"><h2><%= link_to person.title, person %><span class='author'>by <%= person.user.login %></span></h2></div>
+  <div class="post_header"><h2><%= link_to_unless_current person.title, person %><span class='author'>by <%= person.user.login %></span></h2></div>
   <div class="post_content readable">
     <%= raw person.content %>
   </div>
