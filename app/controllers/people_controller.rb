@@ -2,6 +2,7 @@ class PeopleController < ApplicationController
 
   before_filter :authenticate_user!
   load_and_authorize_resource :except => [:unanswered, :rss]
+  before_filter :require_no_authentication, :only => :rss
 
   def rss
     @people = Person.all
