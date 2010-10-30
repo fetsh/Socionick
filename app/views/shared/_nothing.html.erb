@@ -2,6 +2,6 @@
   <p>Упс: нет никого, чей тип было бы необходимо определить.
   Можно <% if can? :create, Person %><%= link_to new_person_path do %>создать&nbsp;запрос<% end -%> самому
   или <% end %>посмотреть уже протипированных людей:
-    <%= link_to all_path do %>сплошным&nbsp;списком<% end -%>
+    <%= link_to people_path do %>сплошным&nbsp;списком<% end -%>
     или <%= link_to stypes_path do %>отсортированными&nbsp;по&nbsp;типам<% end %>.</p>
 </div>
