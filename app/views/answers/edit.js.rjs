@@ -1,0 +1,4 @@
+page[@answer].remove
+page.insert_html :after, "person_#{@person.id}", :partial => 'answers/answer_form', :locals => { :person => @person, :answer => @answer }
+page["answer_form_#{@person.id}"].hide
+page.visual_effect :slideDown, "answer_form_#{@person.id}", :duration => 0.6

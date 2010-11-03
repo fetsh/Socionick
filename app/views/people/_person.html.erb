@@ -1,4 +1,4 @@
-<div class="contentbox person">
+<div class="contentbox person" id="person_<%= person.id %>">
 
   <div class="post_header"><h2><%= link_to_unless_current person.title, person %><span class='author'>by <%= person.user.login %></span></h2></div>
   <div class="post_content readable">
@@ -17,13 +17,13 @@
   <% end -%>
 
   <div class="answers" id="answers_<%= person.id %>">
-    <% if !person.answers.empty? -%>
+    <% unless person.answers.empty? -%>
       <%= render :partial => 'answers/answer', :collection => person.answers %>
     <% end -%>
   </div>
 </div>
 <% if can? :create, Answer -%>
   <% unless person.answers.any? { |answer| answer.user.id == current_user.id } -%>
-    <%= render 'answers/answer_form', :person => person %>
+    <%= render :partial => 'answers/answer_form', :locals => { :person => person, :answer => Answer.new } %>
   <% end -%>
 <% end -%>

@@ -22,4 +22,28 @@ class AnswersController < ApplicationController
       end
     end
   end
+  
+  def edit
+    @stypes = Stype.all
+    @person = Person.find(params[:person_id])
+    @answer = @person.answers.find(params[:id])
+    unauthorized! if cannot? :manage, @answer
+    respond_to do |format|
+      format.html { redirect_to people_path }
+      format.js
+    end
+  end
+  
+  def update 
+    @person = Person.find(params[:person_id])
+    @answer = @person.answers.find(params[:id])
+    unauthorized! if cannot? :manage, @answer
+    if @answer.update_attributes(params[:answer])
+      respond_to do |format|
+        format.html { redirect_to people_path }
+        format.js
+      end
+    end
+  end
+ 
 end
