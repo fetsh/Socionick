@@ -1,20 +1,37 @@
-<div class="contentbox">
-<%= form_for person  do |f| %>
+
+<%= form_for person, :html => { :multipart => true }  do |f| %>
 
   <%= render 'shared/error_messages', :object => f.object %>
 
-  <div class="field">
-    <%= f.label :title, "Имя" %><br />
-    <%= f.text_field :title %>
+  <% unless person.new_record? %>
+    <% for photo in person.photos %>
+      <span id="photo_<%= photo.id %>" class="photo_holder">
+        <%= image_tag(photo.data(:thumb)) %>
+        <span class="delete_photo"><%= link_to "delete", delete_photo_path(photo.id), :remote => true %></span>
+      </span>
+    <% end %>
+  <% end %>
+  <div id=video_form">
+  <% f.fields_for :videos do |builder| %>
+    <%= render 'video_fields', :f => builder %>
+  <% end %>  
   </div>
+  <p><%= link_to_add_fields "Добавить фото", f, :photos %> или <%= link_to_add_fields "Youtube видео", f, :videos, true %></p>
+
+  
+  <div class="field">
+    <%= f.label :title, "Имя", :class => 'text_field_label' %><br />
+    <%= f.text_field :title, :class => 'text_field big wide' %>
+  </div>
+
   <div class="field" style="padding-top:15px;">
-    <%= f.label :content, "Описание" %><br />
-    <%= f.text_area :content, :escape => false %>
+    <%= f.label :content, "Описание", :class => 'text_field_label'  %><br />
+    <%= f.text_area :content, :escape => false, :class => 'wide' %>
   </div>
   <div>
     <% Person::GENDERS.each do |gender, translated|  %>
       <%= f.radio_button :gender, gender %>
-      <%= f.label gender, translated %>
+      <%= f.label :gender, translated, :value => gender %>
     <% end %>
   </div>
   <div class="actions" style="padding-top:15px; padding-bottom:15px;">
@@ -22,4 +39,4 @@
   </div>
 
 <% end %>
-</div>
+

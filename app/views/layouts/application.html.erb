@@ -13,7 +13,7 @@
   <!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
   <%= stylesheet_link_tag :all %>
   <%= auto_discovery_link_tag :atom, rss_path(:format => :atom) %>
-
+  <%= javascript_include_tag 'tinybox' %>
 
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
@@ -30,7 +30,6 @@
       <% end %>
      <% end %>
       <%= yield %>
-
     </section>    
 
     <%= render 'layouts/footer' %>

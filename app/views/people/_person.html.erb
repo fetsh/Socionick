@@ -1,7 +1,28 @@
 <div class="contentbox person" id="person_<%= person.id %>">
 
   <div class="post_header"><h2><%= link_to_unless_current person.title, person %><span class='author'>by <%= person.user.login %></span></h2></div>
-  <div class="post_content readable">
+  
+  <% if person.photos.any? %>
+    <%= image_tag(person.photos.first.data.url) %>
+  <% elsif person.videos.any? %>
+      <object width="590" height="467">
+          <param name="movie" value="http://www.youtube.com/v/<%= video.video_id %>&hl=en"></param>
+          <param name="wmode" value="transparent"></param>
+          <embed src="http://www.youtube.com/v/<%= video.video_id %>&hl=en" type="application/x-shockwave-flash" wmode="transparent" width="590" height="467"></embed>
+      </object>
+  <% end %>
+  
+  <% if person.photos.size > 1 %>
+    <% for photo in person.photos[1..person.photos.size-1] %>
+      <div class="thumbnail" id="tinyboxphoto<%= photo.id %>"><%= image_tag(photo.data(:thumb)) %></div>
+    <% end %>
+  <% end %>
+  <% if person.videos.size > 1 %>
+    <% for video in person.videos[1..person.videos.size-1] %>
+      <div class="thumbnail" id="tinyboxvideo<%= video.id %>"><%= image_tag "http://img.youtube.com/vi/" + video.video_id + "/default.jpg" %></div>
+    <% end %>
+  <% end %>
+  <div class="post_content readable clear">
     <%= raw person.content %>
   </div>
 
@@ -27,3 +48,20 @@
     <%= render :partial => 'answers/answer_form', :locals => { :person => person, :answer => Answer.new } %>
   <% end -%>
 <% end -%>
+
+<% if person.photos.size > 1 %>
+<script type="text/javascript">
+  <% for photo in person.photos[1..person.photos.size-1] %>
+      var contentphoto<%= photo.id %> = '<%= image_tag(photo.data.url, :size => photo.geometry) %>';
+      T$('tinyboxphoto<%= photo.id %>').onclick = function(){TINY.box.show(contentphoto<%= photo.id %>,0,0,0,1)}
+  <% end %>
+</script>
+<% end %>
+<% if person.videos.size > 1 %>
+<script type="text/javascript">
+  <% for video in person.videos[1..person.videos.size-1] %>
+      var contentvideo<%= video.id %> = '<object width="590" height="467"><param name="movie" value="http://www.youtube.com/v/<%= video.video_id %>&hl=en"></param><param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/v/<%= video.video_id %>&hl=en" type="application/x-shockwave-flash" wmode="transparent" width="590" height="467"></embed></object>';
+      T$('tinyboxvideo<%= video.id %>').onclick = function(){TINY.box.show(contentvideo<%= video.id %>,0,590,467,1)}
+  <% end %>
+</script>
+<% end %>

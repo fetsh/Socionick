@@ -64,8 +64,8 @@
           <div class="subbar box-tim" style="display: none;"></div>
           <div class="box-body">
             <div class="section">
-              Зарезервированно для версии 1.0.0.<br><%= link_to 'Что там будет?', about_path %><!-- <% form_tag '/stypes/switcher', :method => :get do -%>
-					<%= select ('stype', 'id', Stype.all.map {|u| [u.title,u.id]})  %><%= submit_tag 'Перейти', :class => 'tim-go' %><% end %> -->
+              Зарезервированно для версии 1.0.0.<br><%= link_to 'Что там будет?', about_path %><!-- <%= form_tag '/stypes/switcher', :method => :get do -%>
+					<%= select('stype', 'id', Stype.all.map {|u| [u.title,u.id]})  %><%= submit_tag 'Перейти', :class => 'tim-go' %><% end %> -->
             </div>
           </div>
         </div>

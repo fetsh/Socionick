@@ -1,0 +1,1 @@
+page["photo_#{@photo.id}"].fade

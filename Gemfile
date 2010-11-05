@@ -9,6 +9,8 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'devise'
 gem "cancan"
 gem 'gravatar_image_tag'
+gem 'paperclip'
+gem 'hpricot'
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -1,7 +1,7 @@
 <div class="answer_holder" id="answer_form_<%= person.id %>">
   <div class="answer_form">
     <%= form_for [person, answer], :remote => true, :html => {:id => "new_answer_#{person.id}"} do |f| %>
-      <%= f.label :comment, gravatar_for ( current_user, :size => 19 ) %>
+      <%= f.label :comment, gravatar_for( current_user, :size => 19 ) %>
       <%= f.collection_select :stype_id, @stypes, :id, :title %>
       <%= f.text_field :comment %>
       <%= f.submit "Ответить" %>

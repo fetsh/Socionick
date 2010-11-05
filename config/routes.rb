@@ -8,6 +8,7 @@ Factory::Application.routes.draw do
   match 'stypes/switcher' => 'stypes#switcher'
   match 'users/:id/people' => 'users#own_people', :as => :user_people
   match 'people/rss', :as => :rss
+  match 'photos/:id/delete' => 'photos#delete', :as => :delete_photo
 
 #  devise_for :users,  :controllers => { :registrations => "users/registrations" }
   devise_for :users

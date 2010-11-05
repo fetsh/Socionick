@@ -1,0 +1,22 @@
+# == Schema Information
+# Schema version: 20101104173614
+#
+# Table name: photos
+#
+#  id                :integer         not null, primary key
+#  person_id         :integer
+#  created_at        :datetime
+#  updated_at        :datetime
+#  data_file_name    :string(255)
+#  data_content_type :string(255)
+#  data_file_size    :integer
+#  data_updated_at   :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  person_id: 1
+
+two:
+  person_id: 1

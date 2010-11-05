@@ -1,6 +1,11 @@
 body {
   background:   url("/images/back.png") repeat-x scroll center top #9BB4C5;
 }
+
+#tinybox {position:absolute; display:none; padding:10px; background:#fff url(/images/preload.gif) no-repeat 50% 50%; border:10px solid #e3e3e3; z-index:2000}
+#tinymask {position:absolute; display:none; top:0; left:0; height:100%; width:100%; background:#000; z-index:1500}
+#tinycontent {background:#fff}
+
 #wrapper {
   width: 630px;
   margin: 0px auto;
@@ -201,13 +206,13 @@ nav ul li {
   padding: 0 5px;
   background-color: #DADADA;
   color: white;
-  
+
 -webkit-border-top-right-radius: 10px;
--webkit-border-bottom-left-radius: 10px;
+-webkit-border-bottom-right-radius: 10px;
 -moz-border-radius-topright: 10px;
--moz-border-radius-bottomright: 10px;
+-moz-border-radius-bottomleft: 10px;
 border-top-right-radius: 10px;
-border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;
 
 }
 .person .misc a {
@@ -443,3 +448,99 @@ select#stype_id {
 .clear {
   clear:left;
 }
+
+
+
+.photo, .video {
+  background-color: #EEEEEE;
+  -webkit-border-radius:5px;-moz-border-radius: 5px;border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 5px;
+  position: relative;
+}
+#photo_format_tooltip {
+color: #999;
+position: absolute;
+right: 15px;
+top: 14px;
+white-space: nowrap;
+}
+
+.photo_holder {position: relative; width: 150px; height: 150px;}
+.photo_holder .delete_photo{
+  visibility: hidden;
+  height: 30px;
+  position:absolute;
+  padding-top: 10px;
+  left: 0;
+  bottom: 0;
+  width: 150px;
+  background-color: white;
+  text-align: center;
+  filter:alpha(opacity=75); /* IE's opacity*/
+  opacity: 0.75;
+  }
+.photo_holder:hover .delete_photo {
+  visibility: visible;
+}
+
+
+input.text_field.big {
+  font-size: 24px;
+}
+
+input.text_field, textarea {
+background: white url(http://assets.tumblr.com/images/input_bg.gif) repeat-x 50% 0%;
+border: 1px solid #BBB;
+color: #222;
+font: normal normal normal 13px/normal 'Lucida Grande', Helvetica, Arial, sans-serif;
+margin: 0px;
+outline: ;
+padding: 7px;
+}
+
+.text_field_label {
+  color: #5B6772;
+  font-size: 16px;
+}
+.video_label {
+color: #999;
+}
+
+.wide {
+max-width: 576px;
+min-width: 576px;
+width: 576px;
+}
+.not_so_wide {
+max-width: 554px;
+min-width: 554px;
+width: 554px;
+height: 70px;
+}
+
+*, :active, :focus {
+outline: 0px none;
+outline-style: none;
+outline-width: 0px;
+}
+
+.thumbnail {
+  width: 145px;
+  height: 100px;
+  overflow: hidden;
+  float: left;
+  background: #EEEEEE;
+  border: 1px solid white;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.thumbnail img {
+  width: 150px;
+}
+
+
+
+
